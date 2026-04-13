@@ -27,18 +27,6 @@ namespace ClinicBookingSystem.Controllers
         {
             a.Id = appointments.Count + 1;
 
-            a.PatientId = 0;//NEED TO GET USER ID FOR THIS
-
-            a.PatientName = "Name"; //NEED PATIENT NAME
-
-            a.DoctorName = "Dr. Ligma";
-
-            a.Date = DateTime.Now.Date; //Date entered.
-
-            a.Time = "12:00 AM"; //TIME ENTERED
-
-            a.Reason = "Bad Breath";
-
             a.Status = "Scheduled";
 
             appointments.Add(a);
@@ -46,7 +34,7 @@ namespace ClinicBookingSystem.Controllers
             return RedirectToAction("AdminDashboard");
         }
 
-
+        [HttpPost]
         public IActionResult RemoveAppointment(Appointment a)
         {
             foreach (Appointment app in appointments)
