@@ -1,3 +1,14 @@
+/*
+ * FILE			         : Program.cs
+ * PROJECT		         : Clinic Booking System
+ * PROGRAMMERS	         : Eumee Garcia, Connar Thompson, Jobair Ahmed Jisan
+ * FIRST VERSION         : 2026-04-13
+ * DESCRIPTION	         : The purpose of this is to...
+ */
+
+using ClinicBookingSystem.Database;
+using Microsoft.EntityFrameworkCore;
+
 namespace ClinicBookingSystem
 {
     public class Program
@@ -5,6 +16,9 @@ namespace ClinicBookingSystem
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options => 
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
