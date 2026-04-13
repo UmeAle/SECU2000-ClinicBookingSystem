@@ -2,12 +2,16 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8" />
+
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0" />
+
     <title>
         @ViewData["Title"] - Clinic Booking System
     </title>
+
     <link rel="stylesheet"
           href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
@@ -15,45 +19,54 @@
           href="~/css/site.css"
           asp-append-version="true" />
 </head>
+
 <body>
+
     @if (ViewData["HideNavbar"] == null)
     {
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom mb-3">
                 <div class="container">
+
                     <a class="navbar-brand"
-                       href="/Appointment/PatientDashboard">
+                       href="/">
                         ClinicBookingSystem
                     </a>
 
-
                     <div class="navbar-nav">
-                        <a class="nav-link"
-                           href="/Appointment/PatientDashboard">
-                            Patient
-                        </a>
+                        @if (ViewBag.Role == "Patient")
+                        {
+                            <a class="nav-link"
+                               href="/Appointment/PatientDashboard">
+                                Patient
+                            </a>
+                        }
 
-                        <a class="nav-link"
-                           href="/Appointment/AdminDashboard">
-                            Admin
-                        </a>
-
-                        <a class="nav-link"
-                           href="/Upload/Index">
-                           Upload
-                        </a>
+                        @if (ViewBag.Role == "Admin")
+                        {
+                            <a class="nav-link"
+                               href="/Appointment/AdminDashboard">
+                                Admin
+                            </a>
+                            <a class="nav-link"
+                               href="/Upload/Index">
+                                Upload
+                            </a>
+                        }
                     </div>
+
                     <div class="ms-auto">
-
-                        <span class="text-muted me-3">
-                            Logged in as:
-                            <b>@ViewBag.Role</b>
-                        </span>
-
-                        <a class="btn btn-outline-dark btn-sm"
-                           href="/Account/Login">
-                            Logout
-                        </a>
+                        @if (ViewBag.Role != null)
+                        {
+                            <span class="text-muted me-3">
+                                Logged in as:
+                                <b>@ViewBag.Role</b>
+                            </span>
+                            <a class="btn btn-outline-dark btn-sm"
+                               href="/Account/Login">
+                                Logout
+                            </a>
+                        }
                     </div>
                 </div>
             </nav>
@@ -63,16 +76,15 @@
     <div class="container">
         <main role="main"
               class="pb-3">
+
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted mt-5">
         <div class="container">
             © 2026 - ClinicBookingSystem
         </div>
     </footer>
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>

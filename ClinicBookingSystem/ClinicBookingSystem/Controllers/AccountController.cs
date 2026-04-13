@@ -33,14 +33,13 @@ namespace ClinicBookingSystem.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
-            User user = db.Users.FirstOrDefault(u => u.Email == username && u.Password == password);
+            User user = db.Users.FirstOrDefault(u => u.Email == username);
 
             if (user == null)
             {
                 user = new User();
 
                 user.Email = username;
-
                 user.Password = password;
 
                 if (username == "admin@clinic.com")
@@ -51,7 +50,14 @@ namespace ClinicBookingSystem.Controllers
                 {
                     user.Role = "Patient";
                 }
-                db.Users.Add(user);
+
+                //update password in case user typed a new one
+                user.Password = password;
+
+                if(user.Id ==0)
+                {
+                    db.Users.Add(user);
+                }
 
                 db.SaveChanges();
             }
