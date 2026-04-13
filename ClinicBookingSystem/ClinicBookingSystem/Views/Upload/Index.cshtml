@@ -1,0 +1,35 @@
+﻿<!--
+ * FILE			         : Index.cshtml
+ * PROJECT		         : Clinic Booking System
+ * PROGRAMMERS	         : Eumee Garcia
+ * FIRST VERSION         : 2026-04-12
+ * DESCRIPTION	         : The purpose of this is to...
+-->
+
+<div class="container">
+
+	<h2 class="fw-bold mt-4">
+		Upload Document
+	</h2>
+
+	<div class="card shadow-sm p-3 mt-3">
+
+		<form method="post"
+			  enctype="multipart/form-data"
+			  action="/Upload/UploadFile">
+
+			<input type="file"
+				   name="file"
+				   class="form-control mb-3" />
+
+			<button class="btn btn-dark">
+
+				Upload
+
+			</button>
+
+		</form>
+
+	</div>
+
+</div>

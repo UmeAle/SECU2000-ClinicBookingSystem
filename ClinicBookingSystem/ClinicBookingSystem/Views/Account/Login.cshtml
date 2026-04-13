@@ -1,0 +1,42 @@
+﻿<!--
+ * FILE			         : Login.cshtml
+ * PROJECT		         : Clinic Booking System
+ * PROGRAMMERS	         : Eumee Garcia
+ * FIRST VERSION         : 2026-04-12
+ * DESCRIPTION	         : The purpose of this is to...
+-->
+@{
+	ViewData["HideNavBar"] = true;
+}
+<div class="container">
+
+	<div class="row justify-content-center">
+		<div class="col-md-4">
+
+			<div class"card shadow mt-5 p-4>
+
+				<h3 class="text-center mb-4">
+					Clinic Booking System
+				</h3>
+
+				<form method="post">
+
+					<div class="mb-3">
+
+						<label>Email</label>
+						<input name="username" class="form-control" />
+					</div>
+
+					<div class="mb-3">
+						<label>Password</label>
+						<input type="password" name="password" class="form-control" />
+					</div>
+
+					<button class="btn btn-dark  w-100">
+						Sign In
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

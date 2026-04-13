@@ -1,0 +1,79 @@
+﻿<!--
+ * FILE			         : PatientDashboard.cshtml
+ * PROJECT		         : Clinic Booking System
+ * PROGRAMMERS	         : Eumee Garcia
+ * FIRST VERSION         : 2026-04-12
+ * DESCRIPTION	         : The purpose of this is to...
+-->
+@model List<ClinicBookingSystem.Models.Appointment>
+
+<div class="container">
+
+	<h2 class="fw-bold mt-4">
+		Patient Dashboard
+	</h2>
+
+	<p class="text-muted">
+		View and search your appointments
+	</p>
+
+
+	<div class="card shadow-sm p-3 mb-4">
+
+		<h5>Search</h5>
+		<div class="row">
+
+			<div class="col-md-6">
+
+				<input class="form-control"
+					   placeholder="Search appointments..." />
+			</div>
+
+			<div class="col-md-3">
+				<input type="date"
+					   class="form-control" />
+			</div>
+
+			<div class="col-md-3">
+				<input type="time"
+					   class="form-control" />
+			</div>
+		</div>
+	</div>
+
+
+	<h5>Appointments</h5>
+
+
+	@foreach (Appointment a in Model)
+	{
+
+		<div class="card shadow-sm p-3 mb-3">
+
+			<b>@a.PatientName</b>
+
+			<p class="mb-1">
+				Doctor: @a.DoctorName
+			</p>
+
+			<p class="mb-1">
+				@a.Date.ToShortDateString()
+			</p>
+
+			<p>
+				@a.Time
+			</p>
+
+			<p>
+				Reason: @a.Reason
+			</p>
+
+			<span class="badge bg-primary">
+				@a.Status
+			</span>
+
+		</div>
+
+	}
+
+</div>
