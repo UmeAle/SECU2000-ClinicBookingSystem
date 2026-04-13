@@ -1,0 +1,228 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\views\\upload\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\views\\upload\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\views\\appointment\\patientdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\views\\appointment\\patientdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\views\\appointment\\admindashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\views\\appointment\\admindashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\models\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\models\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|c:\\users\\eumee\\onedrive - conestoga college\\application security\\groupproject\\secu2000-clinicbookingsystem\\clinicbookingsystem\\clinicbookingsystem\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D2535B0-94AC-4CBF-A2E4-B216C5719C86}|ClinicBookingSystem\\ClinicBookingSystem.csproj|solutionrelative:clinicbookingsystem\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ClinicBookingSystem\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABwAAAAAAAAAAAAmwCkAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-13T06:07:04.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UploadController.cs",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Controllers\\UploadController.cs",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Controllers\\UploadController.cs",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Controllers\\UploadController.cs",
+              "RelativeToolTip": "ClinicBookingSystem\\Controllers\\UploadController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA2wB8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T05:39:50.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Program.cs",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Program.cs",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Program.cs",
+              "RelativeToolTip": "ClinicBookingSystem\\Program.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAzwB4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T05:29:47.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Views\\Upload\\Index.cshtml",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Views\\Upload\\Index.cshtml",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Views\\Upload\\Index.cshtml",
+              "RelativeToolTip": "ClinicBookingSystem\\Views\\Upload\\Index.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAmwCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-13T05:03:10.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AdminDashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Views\\Appointment\\AdminDashboard.cshtml",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Views\\Appointment\\AdminDashboard.cshtml",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Views\\Appointment\\AdminDashboard.cshtml",
+              "RelativeToolTip": "ClinicBookingSystem\\Views\\Appointment\\AdminDashboard.cshtml",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAmwG0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-13T04:50:38.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PatientDashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Views\\Appointment\\PatientDashboard.cshtml",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Views\\Appointment\\PatientDashboard.cshtml",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Views\\Appointment\\PatientDashboard.cshtml",
+              "RelativeToolTip": "ClinicBookingSystem\\Views\\Appointment\\PatientDashboard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-13T04:35:11.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppointmentController.cs",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Controllers\\AppointmentController.cs",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Controllers\\AppointmentController.cs",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Controllers\\AppointmentController.cs",
+              "RelativeToolTip": "ClinicBookingSystem\\Controllers\\AppointmentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T04:28:58.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "ClinicBookingSystem\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-13T00:31:08.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "ClinicBookingSystem\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T00:27:41.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Document.cs",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Models\\Document.cs",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Models\\Document.cs",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Models\\Document.cs",
+              "RelativeToolTip": "ClinicBookingSystem\\Models\\Document.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T00:23:35.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Models\\Appointment.cs",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Models\\Appointment.cs",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Models\\Appointment.cs",
+              "RelativeToolTip": "ClinicBookingSystem\\Models\\Appointment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T00:20:51.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Models\\User.cs",
+              "RelativeDocumentMoniker": "ClinicBookingSystem\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\eumee\\OneDrive - Conestoga College\\Application Security\\GroupProject\\SECU2000-ClinicBookingSystem\\ClinicBookingSystem\\ClinicBookingSystem\\Models\\User.cs",
+              "RelativeToolTip": "ClinicBookingSystem\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T00:11:45.102Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
