@@ -33,8 +33,18 @@ namespace ClinicBookingSystem.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
+            // VALIDATION: prevent empty login
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                ViewBag.Error = "Email and password are required";
+                ViewData["HideNavbar"] = true;
+
+                return View();
+            }
+
             User user = db.Users.FirstOrDefault(u => u.Email == username);
 
+            // if user doesn't exist → create new patient/admin
             if (user == null)
             {
                 user = new User();
@@ -51,25 +61,18 @@ namespace ClinicBookingSystem.Controllers
                     user.Role = "Patient";
                 }
 
-                //update password in case user typed a new one
-                user.Password = password;
-
-                if(user.Id ==0)
-                {
-                    db.Users.Add(user);
-                }
-
+                db.Users.Add(user);
                 db.SaveChanges();
             }
 
-            if (username == "Admin")
+            ViewBag.Role = user.Role;
+
+            if (user.Role == "Admin")
             {
                 return RedirectToAction("AdminDashboard", "Appointment");
             }
-            else
-            {
-                return RedirectToAction("PatientDashboard", "Appointment");
-            }
+
+            return RedirectToAction("PatientDashboard", "Appointment");
         }
     }
 }

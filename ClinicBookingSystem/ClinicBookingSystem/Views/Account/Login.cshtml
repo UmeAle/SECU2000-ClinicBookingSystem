@@ -19,7 +19,7 @@
 					Clinic Booking System
 				</h3>
 
-				<form method="post">
+				<form method="post" action="/Account/Login">
 
 					<div class="mb-3">
 
@@ -35,6 +35,10 @@
 					<button class="btn btn-dark  w-100">
 						Sign In
 					</button>
+
+					<p class="text-danger">
+						@ViewBag.Error
+					</p>
 				</form>
 			</div>
 		</div>
