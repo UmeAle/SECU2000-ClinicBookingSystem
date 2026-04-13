@@ -1,7 +1,7 @@
 /*
  * FILE			         : Program.cs
  * PROJECT		         : Clinic Booking System
- * PROGRAMMERS	         : Eumee Garcia, Connar Thompson, Jobair Ahmed Jisan
+ * PROGRAMMERS	         : Eumee Garcia
  * FIRST VERSION         : 2026-04-13
  * DESCRIPTION	         : The purpose of this is to...
  */
