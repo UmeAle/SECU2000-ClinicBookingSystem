@@ -7,17 +7,31 @@
  */
 
 
+using System.ComponentModel.DataAnnotations;
+
 namespace ClinicBookingSystem.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Appointment
     {
         public int Id { get; set; }
-        public string PatientName { get; set; }
-        public string DoctorName { get; set; }
-        public DateTime Date { get; set; }
-        public string Time {  get; set; }
-        public string Reason { get; set; }
-        public string Status { get; set; }
 
+        [Required]
+        public string PatientName { get; set; }
+
+        [Required]
+        public string DoctorName { get; set; }
+
+        [Required]
+        public DateTime Date { get; set; }
+
+        [Required]
+        public string Time { get; set; }
+
+        [Required]
+        public string Reason { get; set; }
+
+        public string? Status { get; set; }
     }
 }

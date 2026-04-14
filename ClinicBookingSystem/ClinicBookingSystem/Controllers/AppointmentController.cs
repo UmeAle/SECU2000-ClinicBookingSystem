@@ -6,52 +6,141 @@
  * DESCRIPTION	         : The purpose of this is to...
  */
 
-using Microsoft.AspNetCore.Mvc;
+using ClinicBookingSystem.Database;
 using ClinicBookingSystem.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicBookingSystem.Controllers
 {
     public class AppointmentController : Controller
     {
-      
-        static List<Appointment> appointments = new List<Appointment>();
+
+        private readonly ApplicationDbContext db;
+
+        public AppointmentController(ApplicationDbContext context)
+        {
+            db = context;
+        }
+
         public IActionResult AdminDashboard()
         {
-            ViewBag.Role = "Admin";
+            IActionResult result;
 
-            return View(appointments);
+            string role = HttpContext.Session.GetString("Role");
+
+            if (role != "Admin")
+            {
+                result = RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                ViewBag.Role = role;
+
+                ViewBag.HideNavbar = false;
+
+                List<Appointment> appointments = db.Appointments.ToList();
+
+                result = View(appointments);
+            }
+
+            return result;
         }
 
         [HttpPost]
         public IActionResult AddAppointment(Appointment a)
         {
-            a.Id = appointments.Count + 1;
+            IActionResult result;
 
-            a.Status = "Scheduled";
+            string role = HttpContext.Session.GetString("Role");
 
-            appointments.Add(a);
+            if (role != "Admin")
+            {
+                result = RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.Error = "All fields required";
 
-            return RedirectToAction("AdminDashboard");
+                    // DEBUG: show exact validation errors
+                    foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        ViewBag.Error += " | " + error.ErrorMessage;
+                    }
+
+                    ViewBag.Role = role;          
+                    ViewBag.HideNavbar = false;   
+
+                    List<Appointment> list = db.Appointments.ToList();
+
+                    result = View("AdminDashboard", list);
+                }
+                else
+                {
+                    a.Status = "Scheduled";
+
+                    db.Appointments.Add(a);
+
+                    db.SaveChanges();
+
+                    result = RedirectToAction("AdminDashboard");
+                }
+            }
+
+            return result;
         }
 
         [HttpPost]
-        public IActionResult RemoveAppointment(Appointment a)
+        public IActionResult RemoveAppointment(int id)
         {
-            foreach (Appointment app in appointments)
-            {
-                if (a.Id == app.Id)
-                {
-                    appointments.Remove(app);
-                }
-            }
-            return RedirectToAction("AdminDashboard");
-        }
+            IActionResult result;
 
+            string role = HttpContext.Session.GetString("Role");
+
+            if (role != "Admin")
+            {
+                result = RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                Appointment a = db.Appointments.FirstOrDefault(x => x.Id == id);
+
+                if (a != null)
+                {
+                    db.Appointments.Remove(a);
+
+                    db.SaveChanges();
+                }
+
+                result = RedirectToAction("AdminDashboard");
+            }
+
+            return result;
+        }
 
         public IActionResult PatientDashboard()
         {
-            ViewBag.Role = "Patient";
-            return View(appointments);
+            IActionResult result;
+
+            string role = HttpContext.Session.GetString("Role");
+
+            if (role == null)
+            {
+                result = RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                ViewBag.Role = role;
+
+                ViewBag.HideNavbar = false;
+
+                List<Appointment> appointments = db.Appointments.ToList();
+
+                result = View(appointments);
+            }
+
+            return result;
         }
     }
 }

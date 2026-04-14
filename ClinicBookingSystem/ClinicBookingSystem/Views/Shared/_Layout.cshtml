@@ -22,7 +22,7 @@
 
 <body>
 
-    @if (ViewData["HideNavbar"] == null)
+    @if (ViewBag.HideNavbar != true)
     {
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom mb-3">
