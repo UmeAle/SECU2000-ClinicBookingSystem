@@ -1,7 +1,7 @@
 ﻿/*
  * FILE			         : AccountController.cs
  * PROJECT		         : Clinic Booking System
- * PROGRAMMERS	         : Eumee Garcia
+ * PROGRAMMERS	         : Eumee Garcia, Connar Thompson
  * FIRST VERSION         : 2026-04-12
  * DESCRIPTION	         : The purpose of this is to...
  */
@@ -65,14 +65,35 @@ namespace ClinicBookingSystem.Controllers
                 db.SaveChanges();
             }
 
-            ViewBag.Role = user.Role;
 
-            if (user.Role == "Admin")
+            //LOGIN CHECKER
+            bool passCheck = false;
+            foreach (User use in db.Users)
             {
-                return RedirectToAction("AdminDashboard", "Appointment");
+                if (use.Email == username && !passCheck)
+                {
+                    if (use.Password == password)
+                    {
+                        passCheck = true;
+                    }
+                }
             }
 
-            return RedirectToAction("PatientDashboard", "Appointment");
+            if (passCheck)
+            {
+                if (username == "Admin")
+                {
+                    return RedirectToAction("AdminDashboard", "Appointment");
+                }
+                else
+                {
+                    return RedirectToAction("PatientDashboard", "Appointment");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account"); 
+            }
         }
     }
 }

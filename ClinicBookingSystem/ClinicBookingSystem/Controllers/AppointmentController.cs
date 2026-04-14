@@ -34,6 +34,20 @@ namespace ClinicBookingSystem.Controllers
             return RedirectToAction("AdminDashboard");
         }
 
+        [HttpPost]
+        public IActionResult RemoveAppointment(Appointment a)
+        {
+            foreach (Appointment app in appointments)
+            {
+                if (a.Id == app.Id)
+                {
+                    appointments.Remove(app);
+                }
+            }
+            return RedirectToAction("AdminDashboard");
+        }
+
+
         public IActionResult PatientDashboard()
         {
             ViewBag.Role = "Patient";
