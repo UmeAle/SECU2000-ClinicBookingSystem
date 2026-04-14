@@ -1,9 +1,10 @@
 ﻿/*
- * FILE			         : UploadController.cs
- * PROJECT		         : Clinic Booking System
- * PROGRAMMERS	         : Eumee Garcia
- * FIRST VERSION         : 2026-04-12
- * DESCRIPTION	         : The purpose of this is to...
+ * FILE             : UploadController.cs
+ * PROJECT          : Clinic Booking System
+ * PROGRAMMERS      : Eumee Garcia
+ * FIRST VERSION    : 2026-04-12
+ * DESCRIPTION      : Handles secure file upload, storage,
+ *                    and deletion for admin users.
  */
 
 using Microsoft.AspNetCore.Mvc;
@@ -15,13 +16,23 @@ namespace ClinicBookingSystem.Controllers
 {
     public class UploadController : Controller
     {
+        // Database context used to store file metadata
         private readonly ApplicationDbContext db;
 
+        /*
+         * FUNCTION     : UploadController (Constructor)
+         * DESCRIPTION  : Initializes controller with database context.
+         */
         public UploadController(ApplicationDbContext context)
         {
             db = context;
         }
 
+        /*
+       * FUNCTION     : Index
+       * DESCRIPTION  : Displays uploaded documents list.
+       *                Only accessible to Admin users.
+       */
         public IActionResult Index()
         {
             string role = HttpContext.Session.GetString("Role");
@@ -33,6 +44,7 @@ namespace ClinicBookingSystem.Controllers
 
             ViewBag.Role = role;
 
+            // Retrieve uploaded files sorted by newest
             List<Document> docs = db.Documents
                 .OrderByDescending(d => d.UploadDate)
                 .ToList();
@@ -42,7 +54,11 @@ namespace ClinicBookingSystem.Controllers
             return View();
         }
 
-
+        /*
+         * FUNCTION     : UploadFile
+         * DESCRIPTION  : Uploads file to server and stores metadata
+         *                in database.
+         */
         [HttpPost]
         public IActionResult UploadFile(IFormFile file)
         {
@@ -80,7 +96,7 @@ namespace ClinicBookingSystem.Controllers
                 return View("Index");
             }
 
-
+            //save file to server
             string fileName = Path.GetFileName(file.FileName);
 
             string path = Path.Combine(
@@ -95,35 +111,33 @@ namespace ClinicBookingSystem.Controllers
                 file.CopyTo(stream);
             }
 
-
+            //save file metadata to database
             Document doc = new Document();
 
             doc.FileName = fileName;
-
             doc.FilePath = "/files/" + fileName;
-
             doc.UploadedBy = role;
-
             doc.UploadDate = DateTime.Now;
-
 
             db.Documents.Add(doc);
 
             db.SaveChanges();
 
-
             TempData["Message"] =
                 "File uploaded successfully";
-
 
             Console.WriteLine(DateTime.Now
                 + " LOG: File uploaded "
                 + fileName);
 
-
             return RedirectToAction("Index");
         }
 
+        /*
+        * FUNCTION     : DeleteFile
+        * DESCRIPTION  : Deletes file from server and removes
+        *                record from database.
+        */
         [HttpPost]
         public IActionResult DeleteFile(int id)
         {
@@ -134,7 +148,7 @@ namespace ClinicBookingSystem.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-
+            // Find document record
             Document doc = db.Documents.FirstOrDefault(d => d.Id == id);
 
             if (doc != null)
@@ -145,25 +159,21 @@ namespace ClinicBookingSystem.Controllers
                     doc.FilePath.TrimStart('/')
                 );
 
-
                 // delete physical file
                 if (System.IO.File.Exists(path))
                 {
                     System.IO.File.Delete(path);
                 }
 
-
                 // remove database record
                 db.Documents.Remove(doc);
 
                 db.SaveChanges();
 
-
                 Console.WriteLine(DateTime.Now
                     + " LOG: File deleted "
                     + doc.FileName);
             }
-
 
             return RedirectToAction("Index");
         }

@@ -1,10 +1,11 @@
 ﻿<!--
- * FILE			         : PatientDashboard.cshtml
- * PROJECT		         : Clinic Booking System
- * PROGRAMMERS	         : Eumee Garcia
- * FIRST VERSION         : 2026-04-12
- * DESCRIPTION	         : The purpose of this is to...
+ * FILE             : PatientDashboard.cshtml
+ * PROJECT          : Clinic Booking System
+ * PROGRAMMERS      : Eumee Garcia
+ * FIRST VERSION    : 2026-04-12
+ * DESCRIPTION      : Displays patient appointments and uploaded documents.
 -->
+
 @model List<ClinicBookingSystem.Models.Appointment>
 
 <style>
@@ -35,7 +36,6 @@
 
 <div class="container">
 
-
     <!-- header -->
     <div class="page-header shadow">
 
@@ -48,7 +48,6 @@
         </p>
 
     </div>
-
 
 
     <!-- search -->
@@ -70,7 +69,6 @@
 
                 </div>
 
-
                 <div class="col-md-3">
 
                     <input type="date"
@@ -79,7 +77,6 @@
 
                 </div>
 
-
                 <div class="col-md-3">
 
                     <button class="btn btn-dark w-100">
@@ -87,15 +84,10 @@
                         Search
 
                     </button>
-
                 </div>
-
             </div>
-
         </form>
-
     </div>
-
 
 
     <!-- appointments -->
@@ -112,69 +104,47 @@
             <p class="text-muted">
 
                 No appointments found
-
             </p>
-
         }
-
 
         @foreach (var a in Model)
         {
-
             <div class="card shadow-sm p-3 mb-3">
-
                 <b>
 
                     @a.PatientName
-
                 </b>
 
 
                 <div>
-
                     Doctor:
                     @a.DoctorName
-
                 </div>
 
 
                 <div>
-
                     Date:
                     @a.Date.ToShortDateString()
-
                 </div>
-
 
                 <div>
-
                     Time:
                     @a.Time
-
                 </div>
-
 
                 <div>
 
                     Reason:
                     @a.Reason
-
                 </div>
-
 
                 <span class="badge bg-primary mt-2">
 
                     @a.Status
-
                 </span>
-
             </div>
-
         }
-
     </div>
-
-
 
     <!-- documents -->
     <div class="card shadow p-4">
@@ -183,25 +153,18 @@
             Your Documents
         </h5>
 
-
         @if (ViewBag.Documents != null &&
                 ViewBag.Documents.Count > 0)
         {
 
             foreach (var doc in ViewBag.Documents)
             {
-
                 <div class="card p-2 mb-2">
-
                     <div class="d-flex justify-content-between">
-
                         <div>
 
                             📄 @doc.FileName
-
                         </div>
-
-
                         <div>
 
                             <a href="@doc.FilePath"
@@ -209,30 +172,19 @@
                                class="btn btn-sm btn-outline-dark">
 
                                 View
-
                             </a>
 
                         </div>
-
                     </div>
-
                 </div>
-
             }
-
         }
         else
         {
-
             <p class="text-muted">
 
                 No documents available
-
             </p>
-
         }
-
     </div>
-
-
 </div>

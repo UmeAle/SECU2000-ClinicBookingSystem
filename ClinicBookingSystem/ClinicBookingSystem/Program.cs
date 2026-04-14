@@ -1,9 +1,10 @@
 /*
- * FILE			         : Program.cs
- * PROJECT		         : Clinic Booking System
- * PROGRAMMERS	         : Eumee Garcia
- * FIRST VERSION         : 2026-04-13
- * DESCRIPTION	         : The purpose of this is to...
+ * FILE             : Program.cs
+ * PROJECT          : Clinic Booking System
+ * PROGRAMMERS      : Eumee Garcia
+ * FIRST VERSION    : 2026-04-13
+ * DESCRIPTION      : Configures services, database connection,
+ *                    session management and application routing.
  */
 
 using ClinicBookingSystem.Database;

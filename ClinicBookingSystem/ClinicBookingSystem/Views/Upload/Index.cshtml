@@ -1,4 +1,12 @@
-﻿@{
+﻿<!--
+ * FILE             : Index.cshtml
+ * PROJECT          : Clinic Booking System
+ * PROGRAMMERS      : Eumee Garcia
+ * FIRST VERSION    : 2026-04-12
+ * DESCRIPTION      : Displays document upload form and list of uploaded files.
+-->
+
+@{
     ViewData["Title"] = "Upload";
 }
 
@@ -9,7 +17,6 @@
     <p class="text-muted">
         Admin can upload PDF, JPG, or PNG files
     </p>
-
 
     <div class="card shadow-sm p-3 mb-4">
 
@@ -22,13 +29,9 @@
                    class="form-control mb-3" />
 
             <button class="btn btn-dark">
-
                 Upload
-
             </button>
-
         </form>
-
 
         <p class="text-danger">
             @ViewBag.Error
@@ -42,8 +45,6 @@
         }
 
     </div>
-
-
 
     <h5>Uploaded Documents</h5>
 
@@ -68,7 +69,6 @@
                     Open File
                 </a>
 
-
                 <form method="post"
                       action="/Upload/DeleteFile"
                       style="display:inline">
@@ -78,15 +78,10 @@
                            value="@doc.Id" />
 
                     <button class="btn btn-sm btn-danger mt-2">
-
                         Delete
-
                     </button>
-
                 </form>
-
             </div>
-
         }
     }
     else

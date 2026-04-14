@@ -1,10 +1,11 @@
 ﻿<!--
- * FILE			         : AdminDashboard.cshtml
- * PROJECT		         : Clinic Booking System
- * PROGRAMMERS	         : Eumee Garcia
- * FIRST VERSION         : 2026-04-12
- * DESCRIPTION	         : The purpose of this is to...
+ * FILE             : AdminDashboard.cshtml
+ * PROJECT          : Clinic Booking System
+ * PROGRAMMERS      : Eumee Garcia
+ * FIRST VERSION    : 2026-04-12
+ * DESCRIPTION      : Displays admin interface for managing appointments and documents.
 -->
+
 @model List<ClinicBookingSystem.Models.Appointment>
 
 <style>
@@ -36,7 +37,6 @@
 
     <!-- header -->
     <div class="page-header shadow">
-
         <h2 class="fw-bold mb-1">
             🛠 Admin Dashboard
         </h2>
@@ -44,10 +44,7 @@
         <p class="mb-0">
             Manage appointments and uploaded documents
         </p>
-
     </div>
-
-
 
     <!-- add appointment -->
     <div class="card shadow p-4 mb-4">
@@ -67,9 +64,7 @@
                            placeholder="Patient Name"
                            class="form-control mb-3"
                            required />
-
                 </div>
-
 
                 <div class="col-md-6">
 
@@ -77,11 +72,8 @@
                            placeholder="Doctor Name"
                            class="form-control mb-3"
                            required />
-
                 </div>
-
             </div>
-
 
             <div class="row">
 
@@ -91,12 +83,9 @@
                            name="Date"
                            class="form-control mb-3"
                            required />
-
                 </div>
 
-
                 <div class="col-md-6">
-
                     <select name="Time"
                             class="form-control mb-3"
                             required>
@@ -110,7 +99,6 @@
                         <option>10:00 AM</option>
                         <option>10:30 AM</option>
                         <option>11:00 AM</option>
-
                         <option>1:00 PM</option>
                         <option>1:30 PM</option>
                         <option>2:00 PM</option>
@@ -118,9 +106,7 @@
                         <option>3:00 PM</option>
 
                     </select>
-
                 </div>
-
             </div>
 
 
@@ -129,13 +115,11 @@
                    class="form-control mb-3"
                    required />
 
-
             <button class="btn btn-dark">
 
                 Add Appointment
 
             </button>
-
 
             <p class="text-danger mt-2">
 
@@ -166,7 +150,6 @@
 
         @foreach (var a in Model)
         {
-
             <div class="card shadow-sm p-3 mb-3">
 
                 <div class="row">
@@ -196,30 +179,20 @@
                             Reason:
                             @a.Reason
                         </div>
-
                     </div>
-
-
 
                     <div class="col-md-4 text-end">
 
                         <span class="badge bg-success mb-2">
-
                             @a.Status
-
                         </span>
-
 
                         <br />
 
-
                         <a href="/Appointment/Edit/@a.Id"
                            class="btn btn-sm btn-warning">
-
                             Edit
-
                         </a>
-
 
                         <form method="post"
                               action="/Appointment/RemoveAppointment"
@@ -229,26 +202,15 @@
                                    name="id"
                                    value="@a.Id" />
 
-
                             <button class="btn btn-sm btn-danger">
-
                                 Delete
-
                             </button>
-
                         </form>
-
                     </div>
-
                 </div>
-
             </div>
-
         }
-
     </div>
-
-
 
     <!-- uploaded files -->
     <div class="card shadow p-4">
@@ -261,51 +223,34 @@
         @if (ViewBag.Documents != null &&
                 ViewBag.Documents.Count > 0)
         {
-
             foreach (var doc in ViewBag.Documents)
             {
 
                 <div class="card p-2 mb-2">
-
                     <div class="d-flex justify-content-between">
 
                         <div>
-
                             📄 @doc.FileName
-
                         </div>
-
 
                         <div>
 
                             <a href="@doc.FilePath"
                                target="_blank"
                                class="btn btn-sm btn-outline-dark">
-
                                 View
-
                             </a>
 
                         </div>
-
                     </div>
-
                 </div>
-
             }
-
         }
         else
         {
-
             <p class="text-muted">
-
                 No documents uploaded yet
-
             </p>
-
         }
-
     </div>
-
 </div>
