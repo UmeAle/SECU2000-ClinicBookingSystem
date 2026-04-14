@@ -38,7 +38,7 @@ namespace ClinicBookingSystem.Controllers
 
                 ViewBag.HideNavbar = false;
 
-                List<Appointment> appointments = db.Appointments.ToList();
+                List<Appointment> appointments = db.Appointments.OrderBy(a => a.Date).ThenBy(a => a.Time).ToList();
 
                 result = View(appointments);
             }
@@ -72,18 +72,20 @@ namespace ClinicBookingSystem.Controllers
                 }
                 else
                 {
-                    // CHECK FOR DUPLICATE
-                    Appointment existing = db.Appointments.FirstOrDefault(x => x.PatientName == a.PatientName &&
-                        x.DoctorName == a.DoctorName && x.Date == a.Date && x.Time == a.Time);
+                    Appointment existing = db.Appointments.FirstOrDefault(x => x.DoctorName == a.DoctorName &&
+                                           x.Date == a.Date && x.Time == a.Time);
 
                     if (existing != null)
                     {
-                        ViewBag.Error = "Appointment already exists";
+                        ViewBag.Error = "Doctor already has an appointment at that time.";
 
                         ViewBag.Role = role;
                         ViewBag.HideNavbar = false;
 
-                        List<Appointment> list = db.Appointments.ToList();
+                        List<Appointment> list = db.Appointments
+                            .OrderBy(x => x.Date)
+                            .ThenBy(x => x.Time)
+                            .ToList();
 
                         result = View("AdminDashboard", list);
                     }
@@ -131,7 +133,51 @@ namespace ClinicBookingSystem.Controllers
             return result;
         }
 
-        public IActionResult PatientDashboard()
+        public IActionResult Edit(int id)
+        {
+            string role = HttpContext.Session.GetString("Role");
+
+            if (role != "Admin")
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            Appointment a = db.Appointments.FirstOrDefault(x => x.Id == id);
+
+            ViewBag.Role = role;
+            ViewBag.HideNavbar = false;
+
+            return View(a);
+        }
+
+
+        [HttpPost]
+        public IActionResult Edit(Appointment a)
+        {
+            string role = HttpContext.Session.GetString("Role");
+
+            if (role != "Admin")
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            Appointment existing = db.Appointments.FirstOrDefault(x => x.Id == a.Id);
+
+            if (existing != null)
+            {
+                existing.PatientName = a.PatientName;
+                existing.DoctorName = a.DoctorName;
+                existing.Date = a.Date;
+                existing.Time = a.Time;
+                existing.Reason = a.Reason;
+
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("AdminDashboard");
+        }
+
+        public IActionResult PatientDashboard(string search)
         {
             IActionResult result;
 
@@ -144,10 +190,21 @@ namespace ClinicBookingSystem.Controllers
             else
             {
                 ViewBag.Role = role;
-
                 ViewBag.HideNavbar = false;
 
-                List<Appointment> appointments = db.Appointments.ToList();
+                List<Appointment> appointments = db.Appointments
+
+                    .Where(a =>
+                        search == null ||
+                        a.PatientName.Contains(search) ||
+                        a.DoctorName.Contains(search) ||
+                        a.Reason.Contains(search)
+                    )
+
+                    .OrderBy(a => a.Date)
+                    .ThenBy(a => a.Time)
+
+                    .ToList();
 
                 result = View(appointments);
             }

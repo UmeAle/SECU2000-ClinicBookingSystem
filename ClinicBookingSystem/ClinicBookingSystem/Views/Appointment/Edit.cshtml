@@ -1,0 +1,49 @@
+﻿@model ClinicBookingSystem.Models.Appointment
+
+<div class="container">
+
+    <h2>Edit Appointment</h2>
+
+    <form method="post">
+
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <input name="PatientName"
+               value="@Model.PatientName"
+               class="form-control mb-2" />
+
+        <input name="DoctorName"
+               value="@Model.DoctorName"
+               class="form-control mb-2" />
+
+        <input type="date"
+               name="Date"
+               value="@Model.Date.ToString("yyyy-MM-dd")"
+               class="form-control mb-2" />
+
+        <select name="Time" class="form-control mb-2">
+
+            <option selected>@Model.Time</option>
+
+            <option>9:00 AM</option>
+            <option>9:30 AM</option>
+            <option>10:00 AM</option>
+            <option>10:30 AM</option>
+            <option>11:00 AM</option>
+
+            <option>1:00 PM</option>
+            <option>1:30 PM</option>
+            <option>2:00 PM</option>
+            <option>2:30 PM</option>
+
+        </select>
+
+        <input name="Reason"
+               value="@Model.Reason"
+               class="form-control mb-2" />
+
+        <button class="btn btn-dark">Save</button>
+
+    </form>
+
+</div>
