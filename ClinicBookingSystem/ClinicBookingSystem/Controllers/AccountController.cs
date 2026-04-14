@@ -33,18 +33,19 @@ namespace ClinicBookingSystem.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
-            // VALIDATION: prevent empty login
+            // prevent empty login
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 ViewBag.Error = "Email and password are required";
-                ViewData["HideNavbar"] = true;
+                ViewBag.HideNavbar = true;
 
                 return View();
             }
 
+            // check if user exists
             User user = db.Users.FirstOrDefault(u => u.Email == username);
 
-            // if user doesn't exist → create new patient/admin
+            // create user if first time logging in
             if (user == null)
             {
                 user = new User();
@@ -52,6 +53,7 @@ namespace ClinicBookingSystem.Controllers
                 user.Email = username;
                 user.Password = password;
 
+                // assign role
                 if (username == "admin@clinic.com")
                 {
                     user.Role = "Admin";
@@ -65,34 +67,26 @@ namespace ClinicBookingSystem.Controllers
                 db.SaveChanges();
             }
 
-
-            //LOGIN CHECKER
-            bool passCheck = false;
-            foreach (User use in db.Users)
+            // check password
+            if (user.Password != password)
             {
-                if (use.Email == username && !passCheck)
-                {
-                    if (use.Password == password)
-                    {
-                        passCheck = true;
-                    }
-                }
+                ViewBag.Error = "Invalid password";
+                ViewBag.HideNavbar = true;
+
+                return View();
             }
 
-            if (passCheck)
+            // store role for navbar + security
+            HttpContext.Session.SetString("Role", user.Role);
+
+            // redirect based on role
+            if (user.Role == "Admin")
             {
-                if (username == "Admin")
-                {
-                    return RedirectToAction("AdminDashboard", "Appointment");
-                }
-                else
-                {
-                    return RedirectToAction("PatientDashboard", "Appointment");
-                }
+                return RedirectToAction("AdminDashboard", "Appointment");
             }
             else
             {
-                return RedirectToAction("Login", "Account"); 
+                return RedirectToAction("PatientDashboard", "Appointment");
             }
         }
     }
