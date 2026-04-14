@@ -29,10 +29,10 @@ namespace ClinicBookingSystem.Controllers
         }
 
         /*
-       * FUNCTION     : Index
-       * DESCRIPTION  : Displays uploaded documents list.
-       *                Only accessible to Admin users.
-       */
+         * FUNCTION     : Index
+         * DESCRIPTION  : Displays uploaded documents list.
+         *                Only accessible to Admin users.
+         */
         public IActionResult Index()
         {
             string role = HttpContext.Session.GetString("Role");
@@ -43,6 +43,9 @@ namespace ClinicBookingSystem.Controllers
             }
 
             ViewBag.Role = role;
+
+            // ensure navbar is visible
+            ViewBag.HideNavbar = false;
 
             // Retrieve uploaded files sorted by newest
             List<Document> docs = db.Documents
@@ -75,7 +78,12 @@ namespace ClinicBookingSystem.Controllers
             {
                 ViewBag.Error = "Please select a file";
 
-                ViewBag.Documents = db.Documents.ToList();
+                // ensure navbar stays visible
+                ViewBag.HideNavbar = false;
+
+                ViewBag.Documents = db.Documents
+                    .OrderByDescending(d => d.UploadDate)
+                    .ToList();
 
                 return View("Index");
             }
@@ -91,12 +99,17 @@ namespace ClinicBookingSystem.Controllers
                 ViewBag.Error =
                     "Invalid file type. Only PDF, JPG, PNG allowed.";
 
-                ViewBag.Documents = db.Documents.ToList();
+                // ensure navbar stays visible
+                ViewBag.HideNavbar = false;
+
+                ViewBag.Documents = db.Documents
+                    .OrderByDescending(d => d.UploadDate)
+                    .ToList();
 
                 return View("Index");
             }
 
-            //save file to server
+            // save file to server
             string fileName = Path.GetFileName(file.FileName);
 
             string path = Path.Combine(
@@ -106,12 +119,13 @@ namespace ClinicBookingSystem.Controllers
             );
 
 
-            using (FileStream stream = new FileStream(path, FileMode.Create))
+            using (FileStream stream =
+                new FileStream(path, FileMode.Create))
             {
                 file.CopyTo(stream);
             }
 
-            //save file metadata to database
+            // save file metadata to database
             Document doc = new Document();
 
             doc.FileName = fileName;
