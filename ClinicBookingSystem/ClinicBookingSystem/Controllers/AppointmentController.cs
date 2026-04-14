@@ -63,14 +63,8 @@ namespace ClinicBookingSystem.Controllers
                 {
                     ViewBag.Error = "All fields required";
 
-                    // DEBUG: show exact validation errors
-                    foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                    {
-                        ViewBag.Error += " | " + error.ErrorMessage;
-                    }
-
-                    ViewBag.Role = role;          
-                    ViewBag.HideNavbar = false;   
+                    ViewBag.Role = role;
+                    ViewBag.HideNavbar = false;
 
                     List<Appointment> list = db.Appointments.ToList();
 
@@ -78,13 +72,31 @@ namespace ClinicBookingSystem.Controllers
                 }
                 else
                 {
-                    a.Status = "Scheduled";
+                    // CHECK FOR DUPLICATE
+                    Appointment existing = db.Appointments.FirstOrDefault(x => x.PatientName == a.PatientName &&
+                        x.DoctorName == a.DoctorName && x.Date == a.Date && x.Time == a.Time);
 
-                    db.Appointments.Add(a);
+                    if (existing != null)
+                    {
+                        ViewBag.Error = "Appointment already exists";
 
-                    db.SaveChanges();
+                        ViewBag.Role = role;
+                        ViewBag.HideNavbar = false;
 
-                    result = RedirectToAction("AdminDashboard");
+                        List<Appointment> list = db.Appointments.ToList();
+
+                        result = View("AdminDashboard", list);
+                    }
+                    else
+                    {
+                        a.Status = "Scheduled";
+
+                        db.Appointments.Add(a);
+
+                        db.SaveChanges();
+
+                        result = RedirectToAction("AdminDashboard");
+                    }
                 }
             }
 
