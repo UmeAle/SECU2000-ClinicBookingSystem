@@ -9,122 +9,146 @@
 
 <div class="container">
 
-    <h2 class="fw-bold mt-4">
-        Admin Dashboard
-    </h2>
+	<h2 class="fw-bold mt-4">
+		Admin Dashboard
+	</h2>
 
-    <p class="text-muted">
-        Create and manage appointment bookings
-    </p>
-
-
-    <!-- Add appointment -->
-    <div class="card shadow-sm p-3 mb-4">
-
-        <h5>Add Appointment</h5>
-
-        <form method="post"
-              action="/Appointment/AddAppointment">
-
-            <input name="PatientName"
-                   placeholder="Patient Name"
-                   class="form-control mb-2" />
-
-            <input name="DoctorName"
-                   placeholder="Doctor Name"
-                   class="form-control mb-2" />
-
-            <input type="date"
-                   name="Date"
-                   class="form-control mb-2" />
-
-            <select name="Time" class="form-control mb-2">
-
-                <option>9:00 AM</option>
-                <option>9:30 AM</option>
-                <option>10:00 AM</option>
-                <option>10:30 AM</option>
-                <option>11:00 AM</option>
-
-                <option>1:00 PM</option>
-                <option>1:30 PM</option>
-                <option>2:00 PM</option>
-                <option>2:30 PM</option>
-                <option>3:00 PM</option>
-
-            </select>
-
-            <input name="Reason"
-                   placeholder="Reason"
-                   class="form-control mb-3" />
-
-            <button class="btn btn-dark">
-                Add Appointment
-            </button>
-
-        </form>
-
-        <p class="text-danger">
-            @ViewBag.Error
-        </p>
-
-    </div>
+	<p class="text-muted">
+		Create and manage appointment bookings
+	</p>
 
 
-    <!-- Appointment list -->
-    <h5>Appointments</h5>
+	<!-- Add appointment -->
+	<div class="card shadow-sm p-3 mb-4">
 
-    @foreach (var a in Model)
-    {
-        <div class="card shadow-sm p-3 mb-3">
+		<h5>Add Appointment</h5>
 
-            <b>@a.PatientName</b>
+		<form method="post"
+			  action="/Appointment/AddAppointment">
 
-            <p class="mb-1">
-                Doctor: @a.DoctorName
-            </p>
+			<input name="PatientName"
+				   placeholder="Patient Name"
+				   class="form-control mb-2" />
 
-            <p class="mb-1">
-                Date: @a.Date.ToShortDateString()
-            </p>
+			<input name="DoctorName"
+				   placeholder="Doctor Name"
+				   class="form-control mb-2" />
 
-            <p class="mb-1">
-                Time: @a.Time
-            </p>
+			<input type="date"
+				   name="Date"
+				   class="form-control mb-2" />
 
-            <p class="mb-1">
-                Reason: @a.Reason
-            </p>
+			<select name="Time" class="form-control mb-2">
 
-            <span class="badge bg-success">
-                @a.Status
-            </span>
+				<option>9:00 AM</option>
+				<option>9:30 AM</option>
+				<option>10:00 AM</option>
+				<option>10:30 AM</option>
+				<option>11:00 AM</option>
+
+				<option>1:00 PM</option>
+				<option>1:30 PM</option>
+				<option>2:00 PM</option>
+				<option>2:30 PM</option>
+				<option>3:00 PM</option>
+
+			</select>
+
+			<input name="Reason"
+				   placeholder="Reason"
+				   class="form-control mb-3" />
+
+			<button class="btn btn-dark">
+				Add Appointment
+			</button>
+
+		</form>
+
+		<p class="text-danger">
+			@ViewBag.Error
+		</p>
+
+	</div>
 
 
-            <div class="mt-2">
+	<!-- Appointment list -->
+	<h5>Appointments</h5>
 
-                <a href="/Appointment/Edit/@a.Id"
-                   class="btn btn-sm btn-warning">
-                    Edit
-                </a>
+	@foreach (var a in Model)
+	{
+		<div class="card shadow-sm p-3 mb-3">
 
-                <form method="post"
-                      action="/Appointment/RemoveAppointment"
-                      style="display:inline">
+			<b>@a.PatientName</b>
 
-                    <input type="hidden"
-                           name="id"
-                           value="@a.Id" />
+			<p class="mb-1">
+				Doctor: @a.DoctorName
+			</p>
 
-                    <button class="btn btn-sm btn-danger">
-                        Delete
-                    </button>
+			<p class="mb-1">
+				Date: @a.Date.ToShortDateString()
+			</p>
 
-                </form>
+			<p class="mb-1">
+				Time: @a.Time
+			</p>
 
-            </div>
+			<p class="mb-1">
+				Reason: @a.Reason
+			</p>
 
-        </div>
-    }
+			<span class="badge bg-success">
+				@a.Status
+			</span>
+
+
+			<div class="mt-2">
+
+				<a href="/Appointment/Edit/@a.Id"
+				   class="btn btn-sm btn-warning">
+					Edit
+				</a>
+
+				<form method="post"
+					  action="/Appointment/RemoveAppointment"
+					  style="display:inline">
+
+					<input type="hidden"
+						   name="id"
+						   value="@a.Id" />
+
+					<button class="btn btn-sm btn-danger">
+						Delete
+					</button>
+
+				</form>
+
+			</div>
+
+		</div>
+	}
+
+	<h5>Uploaded Documents</h5>
+
+	@if (ViewBag.Documents != null && ViewBag.Documents.Count > 0)
+	{
+		foreach (var doc in ViewBag.Documents)
+		{
+			<div class="card p-2 mb-2">
+
+				<b>@doc.FileName</b>
+
+				<br />
+
+				<a href="@doc.FilePath" target="_blank">
+					Open File
+				</a>
+
+			</div>
+		}
+	}
+	else
+	{
+		<p>No documents uploaded yet</p>
+	}
 
 </div>

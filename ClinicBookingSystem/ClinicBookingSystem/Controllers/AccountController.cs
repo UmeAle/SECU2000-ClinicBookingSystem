@@ -65,6 +65,8 @@ namespace ClinicBookingSystem.Controllers
 
                 db.Users.Add(user);
                 db.SaveChanges();
+
+                Console.WriteLine("LOG: User logged in as " + user.Role + " Email: " + user.Email);
             }
 
             // check password

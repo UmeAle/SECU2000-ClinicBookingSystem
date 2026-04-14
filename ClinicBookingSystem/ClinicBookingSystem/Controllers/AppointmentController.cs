@@ -35,10 +35,17 @@ namespace ClinicBookingSystem.Controllers
             else
             {
                 ViewBag.Role = role;
-
                 ViewBag.HideNavbar = false;
 
-                List<Appointment> appointments = db.Appointments.OrderBy(a => a.Date).ThenBy(a => a.Time).ToList();
+                List<Appointment> appointments = db.Appointments
+                    .OrderBy(x => x.Date)
+                    .ThenBy(x => x.Time)
+                    .ToList();
+
+                List<Document> docs = db.Documents.ToList();
+
+                ViewBag.Documents = docs;
+
 
                 result = View(appointments);
             }
@@ -97,6 +104,9 @@ namespace ClinicBookingSystem.Controllers
 
                         db.SaveChanges();
 
+                        Console.WriteLine("LOG: Appointment created for " + a.PatientName
+                        + " with " + a.DoctorName + " on " + a.Date + " at " + a.Time);
+
                         result = RedirectToAction("AdminDashboard");
                     }
                 }
@@ -125,6 +135,8 @@ namespace ClinicBookingSystem.Controllers
                     db.Appointments.Remove(a);
 
                     db.SaveChanges();
+
+                    Console.WriteLine("LOG: Appointment deleted ID = " + id);
                 }
 
                 result = RedirectToAction("AdminDashboard");
@@ -172,6 +184,8 @@ namespace ClinicBookingSystem.Controllers
                 existing.Reason = a.Reason;
 
                 db.SaveChanges();
+
+                Console.WriteLine("LOG: Appointment updated ID = " + a.Id);
             }
 
             return RedirectToAction("AdminDashboard");

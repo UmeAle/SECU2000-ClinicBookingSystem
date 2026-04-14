@@ -15,8 +15,12 @@ namespace ClinicBookingSystem.Controllers
 {
     public class UploadController : Controller
     {
-
         private readonly ApplicationDbContext db;
+
+        public UploadController(ApplicationDbContext context)
+        {
+            db = context;
+        }
 
         public IActionResult Index()
         {
@@ -29,8 +33,15 @@ namespace ClinicBookingSystem.Controllers
 
             ViewBag.Role = role;
 
+            List<Document> docs = db.Documents
+                .OrderByDescending(d => d.UploadDate)
+                .ToList();
+
+            ViewBag.Documents = docs;
+
             return View();
         }
+
 
         [HttpPost]
         public IActionResult UploadFile(IFormFile file)
@@ -42,19 +53,33 @@ namespace ClinicBookingSystem.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
+
+            // check file selected
             if (file == null || file.Length == 0)
             {
-                return RedirectToAction("Index");
-            }
+                ViewBag.Error = "Please select a file";
 
-            // allow only safe file types
-            string extension = Path.GetExtension(file.FileName).ToLower();
+                ViewBag.Documents = db.Documents.ToList();
 
-            if (extension != ".pdf" && extension != ".png" && extension != ".jpg")
-            {
-                ViewBag.Error = "Invalid file type";
                 return View("Index");
             }
+
+
+            // allowed file types
+            string extension = Path.GetExtension(file.FileName).ToLower();
+
+            if (extension != ".pdf"
+                && extension != ".jpg"
+                && extension != ".png")
+            {
+                ViewBag.Error =
+                    "Invalid file type. Only PDF, JPG, PNG allowed.";
+
+                ViewBag.Documents = db.Documents.ToList();
+
+                return View("Index");
+            }
+
 
             string fileName = Path.GetFileName(file.FileName);
 
@@ -64,22 +89,84 @@ namespace ClinicBookingSystem.Controllers
                 fileName
             );
 
-            FileStream stream = new FileStream(path, FileMode.Create);
 
-            file.CopyTo(stream);
+            using (FileStream stream = new FileStream(path, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
 
-            stream.Close();
 
-            // save to database (audit trail)
             Document doc = new Document();
 
             doc.FileName = fileName;
+
             doc.FilePath = "/files/" + fileName;
 
+            doc.UploadedBy = role;
+
+            doc.UploadDate = DateTime.Now;
+
+
             db.Documents.Add(doc);
+
             db.SaveChanges();
+
+
+            TempData["Message"] =
+                "File uploaded successfully";
+
+
+            Console.WriteLine(DateTime.Now
+                + " LOG: File uploaded "
+                + fileName);
+
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult DeleteFile(int id)
+        {
+            string role = HttpContext.Session.GetString("Role");
+
+            if (role != "Admin")
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+
+            Document doc = db.Documents.FirstOrDefault(d => d.Id == id);
+
+            if (doc != null)
+            {
+                string path = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot",
+                    doc.FilePath.TrimStart('/')
+                );
+
+
+                // delete physical file
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+
+
+                // remove database record
+                db.Documents.Remove(doc);
+
+                db.SaveChanges();
+
+
+                Console.WriteLine(DateTime.Now
+                    + " LOG: File deleted "
+                    + doc.FileName);
+            }
+
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
