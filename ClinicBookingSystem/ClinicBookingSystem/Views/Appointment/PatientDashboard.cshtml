@@ -7,80 +7,232 @@
 -->
 @model List<ClinicBookingSystem.Models.Appointment>
 
+<style>
+
+    body {
+        background: #f5f7fb;
+    }
+
+    .page-header {
+        background: linear-gradient(135deg, #36b9cc, #4e73df);
+        color: white;
+        padding: 25px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+    }
+
+    .card {
+        border-radius: 12px;
+    }
+
+    .section-title {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+</style>
+
+
 <div class="container">
 
-	<h2 class="fw-bold mt-4">
-		Patient Dashboard
-	</h2>
 
-	<p class="text-muted">
-		View and search your appointments
-	</p>
+    <!-- header -->
+    <div class="page-header shadow">
 
+        <h2 class="fw-bold mb-1">
+            👤 Patient Dashboard
+        </h2>
 
-	<div class="card shadow-sm p-3 mb-4">
+        <p class="mb-0">
+            View your appointments and documents
+        </p>
 
-		<h5>Search</h5>
-
-		<form method="get">
-
-			<div class="row">
-
-				<div class="col-md-6">
-
-					<input name="search"
-						   class="form-control"
-						   placeholder="Search patient, doctor, or reason" />
-
-				</div>
-
-				<div class="col-md-2">
-
-					<button class="btn btn-dark w-100">
-						Search
-					</button>
-
-				</div>
-
-			</div>
-
-		</form>
-
-	</div>
+    </div>
 
 
-	<h5>Appointments</h5>
+
+    <!-- search -->
+    <div class="card shadow p-4 mb-4">
+
+        <h5 class="section-title">
+            Search Appointments
+        </h5>
+
+        <form method="get">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <input name="search"
+                           class="form-control"
+                           placeholder="Search by patient or doctor" />
+
+                </div>
 
 
-	@foreach (Appointment a in Model)
-	{
+                <div class="col-md-3">
 
-		<div class="card shadow-sm p-3 mb-3">
+                    <input type="date"
+                           name="date"
+                           class="form-control" />
 
-			<b>@a.PatientName</b>
+                </div>
 
-			<p class="mb-1">
-				Doctor: @a.DoctorName
-			</p>
 
-			<p class="mb-1">
-				Date: @a.Date.ToShortDateString()
-			</p>
+                <div class="col-md-3">
 
-			<p class="mb-1">
-				Time: @a.Time
-			</p>
+                    <button class="btn btn-dark w-100">
 
-			<p>
-				Reason: @a.Reason
-			</p>
+                        Search
 
-			<span class="badge bg-primary">
-				@a.Status
-			</span>
+                    </button>
 
-		</div>
+                </div>
 
-	}
+            </div>
+
+        </form>
+
+    </div>
+
+
+
+    <!-- appointments -->
+    <div class="card shadow p-4 mb-4">
+
+        <h5 class="section-title">
+            Your Appointments
+        </h5>
+
+
+        @if (Model.Count == 0)
+        {
+
+            <p class="text-muted">
+
+                No appointments found
+
+            </p>
+
+        }
+
+
+        @foreach (var a in Model)
+        {
+
+            <div class="card shadow-sm p-3 mb-3">
+
+                <b>
+
+                    @a.PatientName
+
+                </b>
+
+
+                <div>
+
+                    Doctor:
+                    @a.DoctorName
+
+                </div>
+
+
+                <div>
+
+                    Date:
+                    @a.Date.ToShortDateString()
+
+                </div>
+
+
+                <div>
+
+                    Time:
+                    @a.Time
+
+                </div>
+
+
+                <div>
+
+                    Reason:
+                    @a.Reason
+
+                </div>
+
+
+                <span class="badge bg-primary mt-2">
+
+                    @a.Status
+
+                </span>
+
+            </div>
+
+        }
+
+    </div>
+
+
+
+    <!-- documents -->
+    <div class="card shadow p-4">
+
+        <h5 class="section-title">
+            Your Documents
+        </h5>
+
+
+        @if (ViewBag.Documents != null &&
+                ViewBag.Documents.Count > 0)
+        {
+
+            foreach (var doc in ViewBag.Documents)
+            {
+
+                <div class="card p-2 mb-2">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            📄 @doc.FileName
+
+                        </div>
+
+
+                        <div>
+
+                            <a href="@doc.FilePath"
+                               target="_blank"
+                               class="btn btn-sm btn-outline-dark">
+
+                                View
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            }
+
+        }
+        else
+        {
+
+            <p class="text-muted">
+
+                No documents available
+
+            </p>
+
+        }
+
+    </div>
+
 
 </div>

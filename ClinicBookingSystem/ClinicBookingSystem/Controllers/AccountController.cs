@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using ClinicBookingSystem.Database;
 using ClinicBookingSystem.Models;
 using System.Linq;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace ClinicBookingSystem.Controllers
 {
@@ -30,66 +32,51 @@ namespace ClinicBookingSystem.Controllers
             return View();
         }
 
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes =
+                    sha256.ComputeHash(
+                        Encoding.UTF8.GetBytes(password));
+
+                return Convert.ToBase64String(bytes);
+            }
+        }
+
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
-            // prevent empty login
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
-            {
-                ViewBag.Error = "Email and password are required";
-                ViewBag.HideNavbar = true;
+            IActionResult result;
 
-                return View();
-            }
-
-            // check if user exists
+            // check if user exists in database
             User user = db.Users.FirstOrDefault(u => u.Email == username);
 
-            // create user if first time logging in
-            if (user == null)
+            if (user == null || user.Password != password)
             {
-                user = new User();
+                ViewBag.Error = "Incorrect email or password";
+                ViewData["HideNavBar"] = true;
 
-                user.Email = username;
-                user.Password = password;
+                Console.WriteLine(HashPassword("myPassword123"));
+                Console.WriteLine(HashPassword("testing123"));
+                Console.WriteLine(HashPassword("testing456"));
 
-                // assign role
-                if (username == "admin@clinic.com")
-                {
-                    user.Role = "Admin";
-                }
-                else
-                {
-                    user.Role = "Patient";
-                }
-
-                db.Users.Add(user);
-                db.SaveChanges();
-
-                Console.WriteLine("LOG: User logged in as " + user.Role + " Email: " + user.Email);
-            }
-
-            // check password
-            if (user.Password != password)
-            {
-                ViewBag.Error = "Invalid password";
-                ViewBag.HideNavbar = true;
-
-                return View();
-            }
-
-            // store role for navbar + security
-            HttpContext.Session.SetString("Role", user.Role);
-
-            // redirect based on role
-            if (user.Role == "Admin")
-            {
-                return RedirectToAction("AdminDashboard", "Appointment");
+                result = View();
             }
             else
             {
-                return RedirectToAction("PatientDashboard", "Appointment");
+                HttpContext.Session.SetString("Role", user.Role);
+
+                if (user.Role == "Admin")
+                {
+                    result = RedirectToAction("AdminDashboard", "Appointment");
+                }
+                else
+                {
+                    result = RedirectToAction("PatientDashboard", "Appointment");
+                }
             }
+            return result;
         }
     }
 }

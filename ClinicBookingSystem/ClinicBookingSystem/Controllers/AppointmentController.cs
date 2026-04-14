@@ -147,31 +147,31 @@ namespace ClinicBookingSystem.Controllers
 
         public IActionResult Edit(int id)
         {
+            IActionResult result;
+
             string role = HttpContext.Session.GetString("Role");
 
             if (role != "Admin")
             {
-                return RedirectToAction("Login", "Account");
+                result = RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                Appointment a = db.Appointments.FirstOrDefault(x => x.Id == id);
+
+                ViewBag.Role = role;
+
+                result = View(a);
             }
 
-            Appointment a = db.Appointments.FirstOrDefault(x => x.Id == id);
-
-            ViewBag.Role = role;
-            ViewBag.HideNavbar = false;
-
-            return View(a);
+            return result;
         }
 
 
         [HttpPost]
         public IActionResult Edit(Appointment a)
         {
-            string role = HttpContext.Session.GetString("Role");
-
-            if (role != "Admin")
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            IActionResult result;
 
             Appointment existing = db.Appointments.FirstOrDefault(x => x.Id == a.Id);
 
@@ -184,14 +184,14 @@ namespace ClinicBookingSystem.Controllers
                 existing.Reason = a.Reason;
 
                 db.SaveChanges();
-
-                Console.WriteLine("LOG: Appointment updated ID = " + a.Id);
             }
 
-            return RedirectToAction("AdminDashboard");
+            result = RedirectToAction("AdminDashboard");
+
+            return result;
         }
 
-        public IActionResult PatientDashboard(string search)
+        public IActionResult PatientDashboard(string search, DateTime? date)
         {
             IActionResult result;
 
@@ -204,23 +204,25 @@ namespace ClinicBookingSystem.Controllers
             else
             {
                 ViewBag.Role = role;
-                ViewBag.HideNavbar = false;
 
-                List<Appointment> appointments = db.Appointments
+                var appointments = db.Appointments.AsQueryable();
 
-                    .Where(a =>
-                        search == null ||
+                if (!string.IsNullOrEmpty(search))
+                {
+                    appointments = appointments.Where(a =>
                         a.PatientName.Contains(search) ||
-                        a.DoctorName.Contains(search) ||
-                        a.Reason.Contains(search)
-                    )
+                        a.DoctorName.Contains(search));
+                }
 
+                if (date != null)
+                {
+                    appointments = appointments.Where(a =>
+                        a.Date == date);
+                }
+
+                result = View(appointments
                     .OrderBy(a => a.Date)
-                    .ThenBy(a => a.Time)
-
-                    .ToList();
-
-                result = View(appointments);
+                    .ToList());
             }
 
             return result;
