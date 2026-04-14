@@ -1,7 +1,7 @@
 ﻿/*
  * FILE			         : ApplicationDbContext.cs
  * PROJECT		         : Clinic Booking System
- * PROGRAMMERS	         : Eumee Garcia, Connar Thompson, Jobair Ahmed Jisan
+ * PROGRAMMERS	         : Eumee Garcia, Connar Thompson
  * FIRST VERSION         : 2026-04-12
  * DESCRIPTION	         : The purpose of this is to...
  */
